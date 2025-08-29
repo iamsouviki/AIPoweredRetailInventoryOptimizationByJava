@@ -1,0 +1,129 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Inventory Analytics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>body{padding:20px}</style>
+</head>
+<body class="container-fluid">
+<h1 class="mb-3">Inventory Analytics Dashboard</h1>
+
+<div class="row mb-3">
+    <div class="col-md-8">
+        <form id="controls" class="row g-2">
+            <div class="col-auto">
+                <label>Forecast days</label>
+                <input id="forecastDays" class="form-control" name="forecastDays" type="number" value="14" min="1" max="365"/>
+            </div>
+            <div class="col-auto">
+                <label>Store Id</label>
+                <input id="storeId" class="form-control" name="storeId" type="text" value=""/>
+            </div>
+            <div class="col-auto">
+                <label>Model</label>
+                <select id="modelType" class="form-select" name="modelType"><option>LSTM</option><option selected>AR</option></select>
+            </div>
+            <div class="col-auto form-check" style="margin-top:28px">
+                <input id="eventBoost" class="form-check-input" type="checkbox" checked>
+                <label class="form-check-label">Event Boost</label>
+            </div>
+            <div class="col-auto" style="margin-top:24px">
+                <button id="refreshBtn" type="button" class="btn btn-primary">Refresh Inventory</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Instructions</h5>
+            <p>Click a product row to load historical sales & forecast. Toggle model & event boost and refresh.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <table id="invTable" class="table table-striped">
+            <thead><tr><th>Product</th><th>Store</th><th>OnHand</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="col-md-8">
+        <canvas id="chart" height="160"></canvas>
+        <div class="mt-2" id="recPanel"></div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const invTable = document.querySelector('#invTable tbody');
+    const forecastDaysEl = document.getElementById('forecastDays');
+    const storeIdEl = document.getElementById('storeId');
+    const modelTypeEl = document.getElementById('modelType');
+    const eventBoostEl = document.getElementById('eventBoost');
+
+    const chartCtx = document.getElementById('chart').getContext('2d');
+    let chart;
+
+    function fetchInventories() {
+        fetch('/api/inventories').then(r=>r.json()).then(data=>{
+            invTable.innerHTML = '';
+            data.forEach(inv => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td><a href="#" class="product-link" data-pid="${inv.productId}" data-sid="${inv.storeId}">${inv.productId}</a></td><td>${inv.storeId}</td><td>${inv.quantityOnHand}</td>`;
+                invTable.appendChild(tr);
+            });
+            document.querySelectorAll('.product-link').forEach(a => a.addEventListener('click', e => {
+                e.preventDefault();
+                loadProduct(a.dataset.pid, a.dataset.sid);
+            }));
+        });
+    }
+
+    async function loadProduct(productId, storeId) {
+        const daysBack = 180;
+        const salesResp = await fetch(`/api/sales?productId=${encodeURIComponent(productId)}&storeId=${encodeURIComponent(storeId)}&daysBack=${daysBack}`);
+        const sales = await salesResp.json();
+        const model = modelTypeEl.value;
+        const fDays = parseInt(forecastDaysEl.value);
+        const fcResp = await fetch(`/api/forecast?productId=${encodeURIComponent(productId)}&storeId=${encodeURIComponent(storeId)}&days=${fDays}&model=${encodeURIComponent(model)}`);
+        const forecast = await fcResp.json();
+
+        // build chart datasets
+        const labels = sales.dates.concat(forecast.map((_,i)=> 'F+'+(i+1)));
+        const hist = sales.values.concat(Array(forecast.length).fill(null));
+        const fc = Array(sales.values.length).fill(null).concat(forecast);
+
+        if (chart) chart.destroy();
+        chart = new Chart(chartCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    { label: 'Historical', data: hist, fill:false, tension:0.1 },
+                    { label: 'Forecast', data: fc, fill:false, borderDash:[5,5], tension:0.1 }
+                ]
+            },
+            options: { responsive:true, plugins:{legend:{position:'top'}} }
+        });
+
+        // fetch recommendation to show numbers
+        const recResp = await fetch(`/recommendation?productId=${encodeURIComponent(productId)}&storeId=${encodeURIComponent(storeId)}&days=${fDays}&modelType=${encodeURIComponent(model)}`);
+        const rec = await recResp.json();
+        document.getElementById('recPanel').innerHTML = `<h5>Recommendation</h5>
+            <p>Avg daily: ${rec.avgDaily.toFixed(2)} | SafetyStock: ${rec.safetyStock.toFixed(1)} | ReorderPoint: ${rec.reorderPoint.toFixed(1)} | SuggestedOrder: ${rec.suggestedOrderQty.toFixed(1)}</p>`;
+    }
+
+    document.getElementById('refreshBtn').addEventListener('click', ()=>{
+        // toggle event boost value in server via property not live — for now just refresh inventories and charts
+        fetchInventories();
+    });
+
+    // initial load
+    fetchInventories();
+});
+</script>
+</body>
+</html>

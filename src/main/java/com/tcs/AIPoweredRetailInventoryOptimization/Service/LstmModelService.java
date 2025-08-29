@@ -2,6 +2,7 @@ package com.tcs.AIPoweredRetailInventoryOptimization.Service;
 
 import com.tcs.AIPoweredRetailInventoryOptimization.Model.SaleHistory;
 import com.tcs.AIPoweredRetailInventoryOptimization.Repository.SaleHistoryRepository;
+import com.tcs.AIPoweredRetailInventoryOptimization.Service.EventImpactService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
@@ -19,6 +20,8 @@ import org.nd4j.linalg.dataset.api.iterator.BaseDatasetIterator;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.learning.config.Adam;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -40,13 +43,21 @@ import java.util.stream.Collectors;
 @Slf4j
 public class LstmModelService {
 
-    private final SaleHistoryRepository saleHistoryRepository;
+    @Value("${events.boost.enabled:true}")
+    private boolean eventBoostEnabled;
+
+    private final EventImpactService eventImpactService;
+
+    @Autowired
+    SaleHistoryRepository saleHistoryRepository;
 
     // directory to store model files
     private final File modelsDir = new File("models");
     {
         if (!modelsDir.exists()) modelsDir.mkdirs();
     }
+
+
 
     /**
      * Train an LSTM model for a product using historical sales aggregated by day.
@@ -55,6 +66,9 @@ public class LstmModelService {
     public void trainModelForProduct(String productId, int windowSize, int epochs) throws Exception {
         // 1) Load sales and aggregate by day (simple)
         List<SaleHistory> sales = saleHistoryRepository.findByProductId(productId);
+        if (eventBoostEnabled) {
+            sales = eventImpactService.applyEventBoost(sales);
+        }
         if (sales == null || sales.isEmpty()) {
             log.warn("No sales found for product {}", productId);
             return;
@@ -137,6 +151,9 @@ public class LstmModelService {
 
         // recreate latest window from data
         List<SaleHistory> sales = saleHistoryRepository.findByProductId(productId);
+        if (eventBoostEnabled) {
+            sales = eventImpactService.applyEventBoost(sales);
+        }
         Map<Long, Integer> daily = new TreeMap<>();
         for (SaleHistory s : sales) {
             long day = s.getSaleDate().getEpochSecond() / 86400L;

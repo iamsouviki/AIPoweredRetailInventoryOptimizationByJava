@@ -4,6 +4,7 @@ import com.tcs.AIPoweredRetailInventoryOptimization.Model.Stores;
 import com.tcs.AIPoweredRetailInventoryOptimization.Model.WeatherData;
 import com.tcs.AIPoweredRetailInventoryOptimization.Repository.StoreRepository;
 import com.tcs.AIPoweredRetailInventoryOptimization.Repository.WeatherDataRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,11 +30,17 @@ public class WeatherIngestionService {
     @Value("${weather.api.key}")
     private String weatherApiKey;
 
+    @PostConstruct
+    public void initAtStartup() {
+        log.info("Running event ingestion at startup...");
+        dailyWeatherFetchAndUpsert();
+    }
+
     /**
      * For each store, fetch current weather and upsert by storeId + date.
      * Runs daily at 06:00 AM server time (adjust cron to your TZ).
      */
-    @Scheduled(cron = "0 0 6 * * ?")
+    @Scheduled(cron = "0 0 0 * * ?")
     public void dailyWeatherFetchAndUpsert() {
         List<Stores> stores = storeRepository.findAll();
         log.info("Weather ingestion: fetching weather for {} stores", stores.size());
@@ -48,8 +55,8 @@ public class WeatherIngestionService {
 
     public void fetchAndUpsertForStore(Stores store) {
         UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl("https://api.openweathermap.org/data/2.5/weather")
-                .queryParam("lat", store.getLatitude())
-                .queryParam("lon", store.getLongitude())
+                .queryParam("lat", store.getLocation().getLat())
+                .queryParam("lon", store.getLocation().getLon())
                 .queryParam("appid", weatherApiKey)
                 .queryParam("units", "metric");
 

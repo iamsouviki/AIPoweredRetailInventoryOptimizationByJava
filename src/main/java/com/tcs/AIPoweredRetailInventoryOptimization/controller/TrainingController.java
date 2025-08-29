@@ -1,6 +1,7 @@
 
-package com.tcs.AIPoweredRetailInventoryOptimization.Service;
+package com.tcs.AIPoweredRetailInventoryOptimization.controller;
 
+import com.tcs.AIPoweredRetailInventoryOptimization.Service.LstmModelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,7 +25,7 @@ public class TrainingController {
         try {
             Future<?> f = executor.submit(() -> {
                 try {
-                    lstmModelService.trainModelForProduct(productId, 14, 20, 16);
+                    lstmModelService.trainModelForProduct(productId, 14, 20);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -50,7 +51,7 @@ public class TrainingController {
             try {
                 Future<?> f = executor.submit(() -> {
                     try {
-                        lstmModelService.trainModelForProduct(pid, 14, 20, 16);
+                        lstmModelService.trainModelForProduct(pid, 14, 20);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

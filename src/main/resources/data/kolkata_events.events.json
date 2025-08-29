@@ -1,0 +1,202 @@
+[
+  {
+    "_id": "event001",
+    "eventName": "Durga Puja",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2023-10-20T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1011"
+  },
+  {
+    "_id": "event002",
+    "eventName": "Durga Puja",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2024-10-10T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1001"
+  },
+  {
+    "_id": "event003",
+    "eventName": "Kali Puja",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2023-11-12T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1009"
+  },
+  {
+    "_id": "event004",
+    "eventName": "Kali Puja",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2024-11-01T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1001"
+  },
+  {
+    "_id": "event005",
+    "eventName": "Diwali",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2023-11-13T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1003"
+  },
+  {
+    "_id": "event006",
+    "eventName": "Diwali",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2024-11-02T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1013"
+  },
+  {
+    "_id": "event007",
+    "eventName": "Christmas Celebration",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2023-12-25T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1002"
+  },
+  {
+    "_id": "event008",
+    "eventName": "Christmas Celebration",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2024-12-25T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1007"
+  },
+  {
+    "_id": "event009",
+    "eventName": "Poila Boishakh",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2023-04-15T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1014"
+  },
+  {
+    "_id": "event010",
+    "eventName": "Poila Boishakh",
+    "eventType": "Festival",
+    "timestamp": {
+      "$date": "2024-04-14T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1008"
+  },
+  {
+    "_id": "event011",
+    "eventName": "Kolkata Book Fair",
+    "eventType": "Exhibition",
+    "timestamp": {
+      "$date": "2023-01-31T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1015"
+  },
+  {
+    "_id": "event012",
+    "eventName": "Kolkata Book Fair",
+    "eventType": "Exhibition",
+    "timestamp": {
+      "$date": "2024-01-15T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1008"
+  },
+  {
+    "_id": "event013",
+    "eventName": "Kolkata International Film Festival",
+    "eventType": "Cultural",
+    "timestamp": {
+      "$date": "2023-11-15T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1015"
+  },
+  {
+    "_id": "event014",
+    "eventName": "Kolkata International Film Festival",
+    "eventType": "Cultural",
+    "timestamp": {
+      "$date": "2024-11-05T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1007"
+  },
+  {
+    "_id": "event015",
+    "eventName": "IPL Cricket Match at Eden Gardens",
+    "eventType": "Sports",
+    "timestamp": {
+      "$date": "2023-04-05T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1015"
+  },
+  {
+    "_id": "event016",
+    "eventName": "IPL Cricket Match at Eden Gardens",
+    "eventType": "Sports",
+    "timestamp": {
+      "$date": "2024-04-18T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1015"
+  },
+  {
+    "_id": "event017",
+    "eventName": "Independence Day Parade",
+    "eventType": "National",
+    "timestamp": {
+      "$date": "2023-08-15T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1008"
+  },
+  {
+    "_id": "event018",
+    "eventName": "Independence Day Parade",
+    "eventType": "National",
+    "timestamp": {
+      "$date": "2024-08-15T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1007"
+  },
+  {
+    "_id": "event019",
+    "eventName": "Republic Day Celebration",
+    "eventType": "National",
+    "timestamp": {
+      "$date": "2023-01-26T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1015"
+  },
+  {
+    "_id": "event020",
+    "eventName": "Republic Day Celebration",
+    "eventType": "National",
+    "timestamp": {
+      "$date": "2024-01-26T00:00:00.000Z"
+    },
+    "location": "Kolkata",
+    "storeId": "S1001"
+  }
+]

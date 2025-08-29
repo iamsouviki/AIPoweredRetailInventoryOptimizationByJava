@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Inventory Forecast Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .card { max-width: 640px; padding: 1.5rem; border: 1px solid #eee; border-radius: 12px; }
+    label { display: block; margin-top: 1rem; }
+    input, select, button { width: 100%; padding: 0.6rem; margin-top: 0.25rem; }
+    button { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Inventory Forecast Dashboard</h2>
+    <form action="/forecast" method="post">
+      <label>Store Number</label>
+      <input name="storeId" value="1001" required />
+
+      <label>Forecast Days</label>
+      <input type="number" name="days" value="7" min="1" max="60" required />
+
+      <label>Model</label>
+      <select name="model">
+        <option value="ARIMA">ARIMA</option>
+        <option value="LSTM">LSTM</option>
+      </select>
+      <button type="submit">Generate Forecast</button>
+    </form>
+    <p style="margin-top:1rem">API also available: <code>POST /api/forecast</code> (JSON)</p>
+  </div>
+</body>
+</html>

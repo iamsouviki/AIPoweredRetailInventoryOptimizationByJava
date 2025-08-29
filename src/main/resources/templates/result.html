@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Forecast Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .card { max-width: 800px; padding: 1.5rem; border: 1px solid #eee; border-radius: 12px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #f7f7f7; }
+    .pill { display:inline-block; padding: 0.25rem 0.5rem; border-radius: 999px; background:#f0f0f0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Forecast Results</h2>
+    <p><strong>Store:</strong> <span class="pill" th:text="${storeId}"></span>
+       <strong style="margin-left:1rem">Days:</strong> <span class="pill" th:text="${days}"></span>
+       <strong style="margin-left:1rem">Model:</strong> <span class="pill" th:text="${modelUsed}"></span></p>
+
+    <h3>Daily Forecast</h3>
+    <table>
+      <thead><tr><th>Day</th><th>Predicted Demand</th></tr></thead>
+      <tbody>
+        <tr th:each="v,iter : ${forecast}">
+          <td th:text="${iter.index + 1}">1</td>
+          <td th:text="${#numbers.formatDecimal(v,1,2)}">0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Supplier-wise Reorder Suggestions</h3>
+    <table>
+      <thead><tr><th>Supplier</th><th>Suggested Qty</th></tr></thead>
+      <tbody>
+        <tr th:each="e : ${#maps.entries(recs)}">
+          <td th:text="${e.key}">Supplier</td>
+          <td th:text="${e.value}">0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:1rem"><a href="/">← Back</a></p>
+  </div>
+</body>
+</html>

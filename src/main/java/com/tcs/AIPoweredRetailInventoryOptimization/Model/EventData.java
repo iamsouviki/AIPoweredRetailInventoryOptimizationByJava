@@ -23,5 +23,10 @@ public class EventData {
     private Instant startTime;
     private Instant endTime;
     private String source;          // e.g., "Google Calendar"
+
+    private String storeId;
+    private String eventType;
+    private String eventName;
+    private String location;
 }
 

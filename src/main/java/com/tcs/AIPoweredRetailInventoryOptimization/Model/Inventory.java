@@ -24,5 +24,6 @@ public class Inventory {
     private int safetyStock;    // Buffer to prevent stockouts
 
     private Instant lastUpdated;
+    private int quantityOnHand;
 }
 

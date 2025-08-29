@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08d0aff5-dfc3-4590-b2eb-491c3ded6dc9" name="Changes" comment="initial commit" />
+    <list default="true" id="08d0aff5-dfc3-4590-b2eb-491c3ded6dc9" name="Changes" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/README-INGESTION.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/ArModelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/EventImpactService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/ForecastService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/RecommendationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/SalesApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/controller/DashboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/controller/EventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/controller/ForecastApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/controller/InventoryApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/controller/RecommendationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/util/EventJsonLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/util/LstmForecastAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/kolkata_events.events.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Model/EventData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Model/EventData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Model/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Repository/InventoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/EventIngestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/EventIngestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/ForecastController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/controller/ForecastController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/LstmModelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/LstmModelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/TrainingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/controller/TrainingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/WeatherIngestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tcs/AIPoweredRetailInventoryOptimization/Service/WeatherIngestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +61,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/iamsouviki/AIPoweredRetailInventoryOptimization.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/iamsouviki/AIPoweredRetailInventoryOptimizationByJava.git&quot;,
     &quot;accountId&quot;: &quot;c5a2ee5a-f812-44aa-b406-2dab52d6a271&quot;
   }
 }</component>
@@ -45,6 +76,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="31rGdMQVPrBMGpB1mUaN7xJEJhu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,12 +87,21 @@
   "keyToString": {
     "Application.AiPoweredRetailInventoryOptimizationApplication.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
+    "Maven. [clean].executor": "Run",
+    "Maven. [install].executor": "Run",
+    "Maven.AIPoweredRetailInventoryOptimization [clean].executor": "Run",
+    "Maven.AIPoweredRetailInventoryOptimization [install].executor": "Run",
+    "Maven.AIPoweredRetailInventoryOptimization [search...].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/souvik-iti/Desktop/AIPoweredRetailInventoryOptimization"
+    "last_opened_file_path": "/home/souvik-iti/Desktop/AIPoweredRetailInventoryOptimization",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -66,6 +109,13 @@
       <recent name="$PROJECT_DIR$/src/main/resources/static/css" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/Js" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install" />
+      <command value="mvn search -o &quot;smile&quot; " />
+      <command value="mvn clean" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="AiPoweredRetailInventoryOptimizationApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -103,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756285199557</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1756376119698</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1756376119698</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -1,5 +1,6 @@
-package com.tcs.AIPoweredRetailInventoryOptimization.Service;
+package com.tcs.AIPoweredRetailInventoryOptimization.controller;
 
+import com.tcs.AIPoweredRetailInventoryOptimization.Service.LstmModelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
